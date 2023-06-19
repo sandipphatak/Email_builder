@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+   <head>
+      <!-- Required meta tags -->
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1" content="width=320">
+      <!-- Bootstrap CSS -->
+      <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css"
+         integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
+      <link rel="stylesheet" href="css/style.css">
+      <title>Email Builder</title>
+   </head>
+   <body>
+
+
+      <textarea id="codeAppend" style="width:0; height:0;position: absolute;top: -10px;" ></textarea>
+
+      <div class="editPanel">
+         <div class="accordion" id="accordionExample">
+
+            <div class="card">
+               <div class="card-header">
+                  <h5 class="mb-0">
+                     <i class="bi bi-window-desktop " id="deskView" style="font-size:28px"></i>
+                     <i class="bi bi-phone" id="mobView" style="font-size:28px"></i> 
+                     <button type="button" class="btn btn-primary float-right"  id="copy">Copy Code</button>                     
+                  </h5>
+               </div>               
+               <div class="card-header" id="headingOne">
+                  <h5 class="mb-0">
+                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseOne"
+                        aria-expanded="false" aria-controls="collapseOne">WRAPPER</button>
+                  </h5>
+               </div>
+               <div id="collapseOne" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
+                  <div class="card-body">
+
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Bg image</div>
+                        <input  type='file' id="wrapBg"  class="col-7 p-0" />
+                     </div>  
+
+                     <div class="row padTopBottom">
+                        <div class="col-12 label p-0">Bg Position</div>
+                        <hr />
+                        <div class="row">
+                           <div class="col-6">
+                              <div class="col-12 label p-0">X</div>
+                              <input type="text" id="wrapBg_posx" class="col-7"  />
+                              <select id="wrapBgPos_x_drop" class="col-4 p-0">
+                                 <option value="">  </option>
+                                 <option value="px"> px </option>
+                                 <option value="%"> % </option>
+                              </select>                              
+                           </div>
+                           <div class="col-6">
+                              <div class="col-12 label p-0">Y</div>
+                              <input type="text"  id="wrapBg_posy" class="col-7"  />
+                              <select id="wrapBgPos_y_drop" class="col-4 p-0">
+                                 <option value="">  </option>
+                                 <option value="px"> px </option>
+                                 <option value="%"> % </option>
+                              </select>                              
+                           </div>
+                        </div>  
+                     </div>
+
+
+                  </div>
+               </div>
+            </div> 
+
+
+            <div class="card">
+               <div class="card-header" id="headingTwo">
+                  <h5 class="mb-0">
+                     <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#collapseTwo"
+                        aria-expanded="true" aria-controls="collapseTwo">
+                     VERTICAL SPACE
+                     </button>
+                     <button class="btn btn-link float-right" onclick="vSpace()" id="vSpace_btn">ADD</button>
+                  </h5>
+               </div>
+               <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+                  <div class="card-body" id="spacing_block">
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Height</div>
+                        <input type="number" name="Space" id="spacerInput" class="col-7">
+                     </div>
+                  </div>
+               </div>
+            </div>
+            <div class="card">
+               <div class="card-header" id="headingThree">
+                  <h5 class="mb-0">
+                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree"
+                        aria-expanded="false" aria-controls="collapseThree">
+                     TEXT
+                     </button>
+                     <button class="btn btn-link float-right" onclick="txtBlock()">ADD</button>
+                     <!-- <button class="btn btn-link float-right" id="clone_txt">ClONE</button> -->
+                  </h5>
+               </div>
+               <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+                  <div class="card-body">
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Text</div>
+                        <textarea id="txtInput" class="textarea col-7"></textarea>
+                     </div>
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Font Family</div>
+                        <select class="col-7 fontFamily" name="fontFamily1"></select>
+                     </div> 
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Font Variants</div>
+                        <select class="col-7 fontVariants" ></select>
+                     </div>                      
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Font Size</div>
+                        <input type="number" placeholder="Font Size" id="fSize1" class="col-7"  />
+                     </div>
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Line Height</div>
+                        <input type="number" placeholder="Line Height" id="lHeight" class="col-7"  />
+                     </div>   
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Letter Spacing</div>
+                        <input type="number" placeholder="Letter Spacing" id="lSpacing" class="col-7"  />
+                     </div> 
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Text Uppecase</div>
+                        <select id="uCase" class="col-7">
+                           <option value="select"> Select Option </option>
+                           <option value="No"> No </option>
+                           <option value="Yes"> Yes </option>
+                        </select>
+                     </div>      
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Text Italic</div>
+                        <select id="tItalic" class="col-7">
+                           <option > Select Option </option>
+                           <option value="No"> No </option>
+                           <option value="Yes"> Yes </option>
+                        </select>
+                     </div>                                       
+                     <div class="row padTopBottom space_between">
+                        <div class="col-5 label p-0">Color</div>
+                        <input type="text" class="col-5" id="hex">
+                        <input type="color" id="color" class="col-2 p-0">
+                     </div>                     
+                     <div class="row padTopBottom">
+                        <div class="col-12 label p-0">Padding</div>
+                        <hr />
+                        <div class="row">
+                           <div class="col-6">
+                              <div class="col-12 label p-0">Top</div>
+                              <input type="number" id="paddTop" class="col-12"  />
+                           </div>
+                           <div class="col-6">
+                              <div class="col-12 label p-0">Bottom</div>
+                              <input type="number"  id="paddBtm" class="col-12"  />
+                           </div>
+                        </div>  
+                        <div class="row  mt-1">
+                           <div class="col-6">
+                              <div class="col-12 label p-0">Left </div>
+                              <input type="number" id="paddLeft" class="col-12"  />
+                           </div>
+                           <div class="col-6">
+                              <div class="col-12 label p-0">Right</div>
+                              <input type="number"  id="paddRight" class="col-12"  />
+                           </div>
+                        </div>                          
+                     </div>
+                     <hr />
+                     <!-- <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Text bg image</div>
+                        <input type="text" placeholder="Bg image" id="txtBg" class="col-7"  />
+                     </div> -->
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Text Bg image</div>
+                        <input  type='file' id="txtBg"  class="col-7 p-0" />
+                     </div>                       
+                     <div class="row padTopBottom">
+                        <div class="col-12 label p-0">Bg Position</div>
+                        <hr />
+                        <div class="row">
+                           <div class="col-6">
+                              <div class="col-12 label p-0">X</div>
+                              <input type="text" id="bg_pos_x" class="col-7"  />
+                              <select id="pos_x_drop" class="col-4 p-0">
+                                 <option value="" selected>  </option>
+                                 <option value="px"> px </option>
+                                 <option value="%"> % </option>
+                              </select>
+                           </div>
+                           <div class="col-6">
+                              <div class="col-12 label p-0">Y</div>
+                              <input type="text"  id="bg_pos_y" class="col-7"  />
+                              <select id="pos_y_drop" class="col-4 p-0">
+                                 <option value="" selected>  </option>
+                                 <option value="px">px</option>
+                                 <option value="%">%</option>
+                              </select>                              
+                           </div>
+                        </div>  
+                     </div>                     
+                  </div>
+               </div>
+            </div>
+           
+            <div class="card">
+               <div class="card-header" id="headingFour">
+                  <h5 class="mb-0">
+                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                     CTA
+                     </button>
+                     <button class="btn btn-link float-right" onclick="ctaBlock()">ADD</button>
+                     <button class="btn btn-link float-right" id="clone_cta">ClONE</button>
+                  </h5>
+               </div>
+               <div id="collapseFour" class="collapse" aria-labelledby="headingFour" data-parent="#accordionExample">
+                  <div class="card-body">
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Font Family</div>
+                        <select class="col-7 fontFamily"  class="col-7"></select>
+                     </div> 
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Font Variants</div>
+                        <select class="col-7 fontVariants" ></select>
+                     </div>                        
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Width</div>
+                        <input type="number"  id="cta_width" class="col-7" />
+                     </div>  
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Height</div>
+                        <input type="number"  id="cta_vspace" class="col-7" />
+                     </div>  
+                     <div class="row padTopBottom space_between">
+                        <div class="col-5 label p-0">Cta Bg Color</div>
+                        <input type="text" class="col-5" id="ctabghex">
+                        <input type="color" id="bgCta" class="col-2 p-0">
+                     </div>      
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Cta Gradient BG</div>
+                        <input type="text"  id="cta_grad" class="col-7" />
+                     </div>                                       
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Text</div>
+                        <input type="text"  id="cta_txt" class="col-7" />
+                     </div>  
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Size</div>
+                        <input type="number"  id="cta_Size" class="col-7" />
+                     </div>   
+                     <div class="row padTopBottom space_between">
+                        <div class="col-5 label p-0">Color</div>
+                        <input type="text" class="col-5" id="ctahex">
+                        <input type="color" id="ctacolor" class="col-2 p-0">
+                     </div>                       
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Line-height</div>
+                        <input type="number"  id="cta_lHeight" class="col-7" />
+                     </div> 
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Text Width</div>
+                        <input type="number"  id="cta_tWidth" class="col-7" />
+                     </div>
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Arrow Image</div>
+                        <input  type='file' id="cta_arrImg"  class="col-7 p-0" />
+                     </div>                                                                                                       
+                  </div>
+               </div>
+            </div>
+
+            <div class="card">
+               <div class="card-header" id="headingFive">
+                  <h5 class="mb-0">
+                     <button class="btn btn-link collapsed" type="button" data-toggle="collapse"
+                        data-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                        IMAGE
+                     </button>
+                     <button class="btn btn-link float-right" onclick="imgBlock()">ADD</button>
+                  </h5>
+               </div>
+               <div id="collapseFive" class="collapse" aria-labelledby="headingFive" data-parent="#accordionExample">
+                  <div class="card-body">
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Img Url</div>
+                        <!-- <input type="text"  id="img_url" class="col-7" /> -->
+                        <input  type='file' id="img_url"  class="col-7 p-0" />
+                     </div>  
+
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Width</div>
+                        <input type="number"  id="img_width" class="col-7" max="598" />
+                     </div>   
+                     
+                     <div class="row padTopBottom">
+                        <div class="col-5 label p-0">Alt Text</div>
+                        <input type="text"  id="img_alt" class="col-7" max="598" />
+                     </div>                       
+                  </div>
+               </div>
+            </div>
+
+         </div>
+      </div>
+      <!-- editPanel end  -->
+      <div class="row">
+         <div class="col-sm-8">
+
+         <div class="alert alert-primary" id="copyStatus" role="alert" id="copy_alert" style="display:none"> COPIED</div>
+
+            <div class="emailPanel" id="copy_code" style="width:900px">
+               <!--[if mso]>
+               <style type="text/css">
+                  body, table, td , span, b{font-family:Arial, Helvetica, sans-serif !important;}
+               </style>
+               <![endif]-->
+               <style type="text/css" >
+                     /* .isMobile table{width:100% !important} */
+                     .isMobile .ctaWrap{width:270px !important}
+                     .isMobile .cta{font-size: 17px !important;line-height: 22px !important;width: 215px !important;}
+                     .isMobile .arrowImage{width: 10px !important;}
+                    
+                     table,td{font-family:'Arial',sans-serif}a{text-decoration:none;outline:none;border:none}
+               </style>               
+               <style type="text/css" id="mobileMedia">
+ 
+               </style>
+
+ 
+               <!-- <iframe srcdoc=""  frameborder="0" width="100%" height="100%" id="iframe" style="min-width: 1024px; min-height: 100%; height: 100%; width: 100%; border: 0px;"> </iframe> -->
+
+                  <div id="loadInFrame">
+                     <table cellpadding="0" cellspacing="0" border="0" align="center" width="100%" style="font-family: Arial, Helvetica, sans-serif">
+                        <tr>
+                           <td align="center" bgcolor="#ffffff">
+                              <table cellpadding="0" cellspacing="0" border="0" width="600" align="center" class="mobWrp">
+                                 <tr>
+                                    <td align="center" style="border:1px solid #e1e1e1;" bgcolor="#ffffff">
+                                       <table cellspacing="0" cellpadding="0" border="0" width="598" align="center" class="mobWrp" id="tableBlock" style="width: 600px;">
+                                          <!--[if gte mso 10]> <style type="text/css"> .bottomSpace{height:35px !important} .cta1{font-size:22px !important} .cta{font-size:18px !important} .spons{font-size:12px !important}  .supHeader{font-size:13px !important} </style><![endif]-->
+
+                                       </table>
+                                    </td>
+                                 </tr>
+                              </table>
+                           </td>
+                        </tr>
+                     </table>
+                     <table border="0" cellpadding="0" cellspacing="0" class="gmail"><tr> <td style="min-width:600px;" ><span>&nbsp; &nbsp;</span></td> </tr></table>
+                  </div>
+                  
+            </div>
+         </div>
+      </div>
+      <style type="text/css">
+         .editPanel {
+         position: absolute;
+         right: 0;
+         top: 0;
+         width: 350px;
+         z-index: 1;
+         height: 100vh;
+         background: #dadada;
+         overflow-y: scroll;
+         }
+         .inputStyle {
+         width: 100%;
+         border: none;
+         border-bottom: 1px solid #bfb9b9;
+         }
+         #Codeappend{font-size: 11px;background: #000;color: #d44950;}
+      </style>
+
+
+
+      <!-- Optional JavaScript -->
+      <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+         integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"
+         integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js"
+         integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
+
+      <script src="js/main.js"></script>
+      <!-- <script src="js/jscolor.min.js"></script> -->
+  
+   </body>
+</html>

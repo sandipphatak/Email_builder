@@ -1,0 +1,48 @@
+input:focus,input:hover{outline: none;}
+hr{border: 1px solid #ede7e7;display: block;width: 100%;}
+body{overflow: hidden;}
+
+.clearfix:before,
+.clearfix:after {
+    content: '\0020';
+    display: block;
+    overflow: hidden;
+    visibility: hidden;
+    width: 0;
+    height: 0
+}
+.clearfix:after {
+    clear: both
+}
+.clearfix {
+    zoom: 1
+}
+
+#deskView, #mobView{cursor: pointer;}
+.padTopBottom{padding:5px}
+.space_between{justify-content: space-between;}
+.textarea{width: 100%;padding: 5px;}
+
+.header {
+    background: #1f2163;
+    padding: 20px 0;
+    font-size: 20px;
+    color: #ffff;
+    font-family: Arial;
+}
+
+.header a {
+    color: #ffffff
+}
+.active {border:1px solid red}
+
+#copyStatus{width: 67%;margin: 0 auto 20px;}
+
+#codeAppend {width: 0;
+        height: 0;
+        position: absolute;
+        top: -10px;}
+
+        
+
+        
